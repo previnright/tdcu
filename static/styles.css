@@ -122,7 +122,7 @@ a img{
   }
 
     .android-navigation .mdl-navigation__link:hover {
-      border-bottom: 4px solid #172241;
+      border-bottom: 4px solid #FF821F;
     }
 
   .android-search-box {
@@ -152,7 +152,7 @@ a img{
 
   .android-drawer .mdl-navigation__link.mdl-navigation__link {
     font-size: 14px;
-    color: #757575;
+    color: #172241;
   }
 
   .android-drawer span.mdl-navigation__link.mdl-navigation__link {
@@ -161,7 +161,7 @@ a img{
 
   .android-drawer .mdl-layout-title {
     position: relative;
-    background: #172241;
+    background: #FF821F;
     height: 160px;
   }
 
@@ -188,7 +188,7 @@ a img{
 
 .android-slogan {
   font-size: 60px;
-  padding-top: 160px;
+  padding-top: 200px;
 }
 
 .android-sub-slogan {
@@ -509,7 +509,7 @@ a img{
   .android-slogan {
     font-size: 26px;
     margin: 0 16px;
-    padding-top: 24px;
+    padding-top: 96px;
   }
 
   .android-sub-slogan {
