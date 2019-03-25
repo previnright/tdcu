@@ -14,6 +14,16 @@
  * limitations under the License.
  */
 
+/*.demo-card-square.mdl-card {
+  width: 350px;
+  height: 200px;
+}
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+/*  background:
+    url('https://getmdl.io/assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;*/
+}*/
+
 body {
   margin: 0;
 }
@@ -179,18 +189,19 @@ a img{
   background-color: #f3f3f3;
   background: url('images/waves.jpg') center 30% no-repeat;
   background-size: cover;
+  padding-left: 50px;
 }
 
 .logo-font {
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   line-height: 1;
-  color: #3E4966;
+  color: #172241;
   font-weight: 500;
 }
 
 .android-slogan {
   font-size: 60px;
-  padding-top: 300px;
+  padding-top: 140px;
 }
 
 .android-sub-slogan {
