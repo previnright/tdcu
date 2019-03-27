@@ -22,7 +22,17 @@
   color: #fff;
 /*  background:
     url('https://getmdl.io/assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;*/
-}*/
+/*}*/
+
+.demo-card-square.mdl-card {
+  width: 320px;
+  height: 320px;
+}
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('https://getmdl.io/assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;
+}
 
 body {
   margin: 0;
@@ -381,18 +391,33 @@ a img{
   padding: 80px 16px 0 16px;
 }
 
+.android-customized-section-text-two {
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 80px 16px 0 16px;
+}
+
   .android-customized-section-text p {
     padding-top: 16px;
   }
 
 .android-customized-section-image {
-  background: url('images/devices.jpg') center top no-repeat;
+  background: url('images/surf.jpg') center -550px no-repeat;
+  /*background-color: #172241;*/
   background-size: cover;
-  height: 400px;
+  height: 300px;
+  opacity: 0.9;
 }
 
 .android-more-section {
   padding: 80px 0;
+  max-width: 1044px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.android-more-section-two {
+  padding: 30px 0;
   max-width: 1044px;
   margin-left: auto;
   margin-right: auto;
