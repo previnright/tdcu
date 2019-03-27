@@ -13,5 +13,13 @@ def hello_world():
 def support():
     return render_template('support.html')
 
+@app.route('/call')
+def call():
+    return render_template('call.html')
+
+@app.route('/email')
+def email():
+    return render_template('email.html')
+
 if __name__ == '__main__':
 	app.run(debug=True)
