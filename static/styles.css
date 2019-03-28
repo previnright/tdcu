@@ -197,7 +197,7 @@ a img{
   height: 1000px;
   width: auto;
   background-color: #f3f3f3;
-  background: url('images/waves.jpg') center 30% no-repeat;
+  background: url('images/house2.jpg') center 30% no-repeat;
   background-size: cover;
   padding-left: 50px;
 }
@@ -205,13 +205,13 @@ a img{
 .logo-font {
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   line-height: 1;
-  color: #172241;
+  color: #F2F3F5;
   font-weight: 500;
 }
 
 .android-slogan {
   font-size: 60px;
-  padding-top: 140px;
+  padding-top: 120px;
 }
 
 .android-sub-slogan {
@@ -403,7 +403,7 @@ a img{
   }
 
 .android-customized-section-image {
-  background: url('images/surf.jpg') center -550px no-repeat;
+  background: url('images/grass.jpg') center -250px no-repeat;
   /*background-color: #172241;*/
   background-size: cover;
   height: 300px;
