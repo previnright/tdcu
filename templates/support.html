@@ -29,6 +29,8 @@
     <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css') }}"> -->
     <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='skeleton.css') }}"> -->
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- Page styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
@@ -85,9 +87,9 @@
           <!-- Navigation -->
           <div class="android-navigation-container">
             <nav class="android-navigation mdl-navigation">
-              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Loans</a>
-              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Mortgages</a>
-              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Personal Banking</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/">Loans</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/">Mortgages</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/">Personal Banking</a>
               <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/support">Support</a>
               <!-- <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Rates</a> -->
               <!-- <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">About</a> -->
@@ -121,9 +123,9 @@
             </div>
         </span>
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="">Loans</a>
-          <a class="mdl-navigation__link" href="">Mortgages</a>
-          <a class="mdl-navigation__link" href="">Personal Banking</a>
+          <a class="mdl-navigation__link" href="/">Loans</a>
+          <a class="mdl-navigation__link" href="/">Mortgages</a>
+          <a class="mdl-navigation__link" href="/">Personal Banking</a>
           <a class="mdl-navigation__link" href="/support">Support</a>
         </nav>
       </div>
@@ -145,9 +147,10 @@
           <div class="android-card-container mdl-grid">
             <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
        <div style="background-color: #FF821F"class="mdl-card__title mdl-card--expand">
-        <h2 style="color: #ffffff"class="mdl-card__title-text"><strong>Chat</strong></h2>
+        <h2 style="color: #ffffff"class="mdl-card__title-text"><strong>Chat</strong><i style="margin-left: 125px"class="material-icons">chat</i></h2>
       </div>
-      <div style=" background-color: #FF821F"class="mdl-card__supporting-text">
+      <div style=" background-color: #FF821F; opacity: 0.9"class="mdl-card__supporting-text">
+        <p style="color: #ffffff; font-weight: lighter">Chat with experts online</p>
       </div>
       <div style="background-color: #ffffff" class="mdl-card__actions mdl-card--border">
         <button style="color: #3E4966"class="mdl-button mdl-js-button mdl-js-ripple-effect">
@@ -158,9 +161,11 @@
 
             <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
       <div style="background-color: #FFD4BA"class="mdl-card__title mdl-card--expand">
-        <h2 style="color: #475059"class="mdl-card__title-text"><strong>Call</strong></h2>
+        <h2 style="color: #475059"class="mdl-card__title-text"><strong>Call</strong><i style="margin-left: 135px"class="material-icons">call</i></h2>
+
       </div>
-      <div style=" background-color: #FFD4BA"class="mdl-card__supporting-text">
+      <div style=" background-color: #FFD4BA; opacity: 0.9"class="mdl-card__supporting-text">
+        <p style="color: #475059; font-weight: lighter">Have us call you right away</p>
       </div>
       <div style="background-color: #ffffff" class="mdl-card__actions mdl-card--border">
         <button id="myBtn" style="color: #3E4966"class="mdl-button mdl-js-button mdl-js-ripple-effect">
@@ -171,9 +176,10 @@
 
             <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
       <div style="background-color: #55B8F0"class="mdl-card__title mdl-card--expand">
-        <h2 style="color: #ffffff"class="mdl-card__title-text"><strong>Email</strong></h2>
+        <h2 style="color: #ffffff"class="mdl-card__title-text"><strong>Email</strong><i style="margin-left: 115px"class="material-icons">email</i></h2>
       </div>
-      <div style=" background-color: #55B8F0"class="mdl-card__supporting-text">
+      <div style=" background-color: #55B8F0; opacity: 0.9"class="mdl-card__supporting-text">
+        <p style="color: #ffffff;font-weight: lighter">Not that urgent? Email us</p>
       </div>
       <div style="background-color: #ffffff" class="mdl-card__actions mdl-card--border">
         <button id="myBtn2" style="color: #3E4966"class="mdl-button mdl-js-button mdl-js-ripple-effect">
@@ -184,12 +190,13 @@
 
             <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
       <div style="background-color: #C9E3F2"class="mdl-card__title mdl-card--expand">
-        <h2 style="color: #475059"class="mdl-card__title-text"><strong>Socials</strong></h2>
+        <h2 style="color: #475059"class="mdl-card__title-text"><strong>Socials</strong><i style="margin-left: 100px"class="material-icons">people</i></h2>
       </div>
-      <div style=" background-color: #C9E3F2"class="mdl-card__supporting-text">
+      <div style=" background-color: #C9E3F2; opacity: 0.9"class="mdl-card__supporting-text">
+        <p style="color: #475059; font-weight: lighter">Stay up to date with us</p>
       </div>
       <div style="background-color: #ffffff" class="mdl-card__actions mdl-card--border">
-        <button style="color: #3E4966"class="mdl-button mdl-js-button mdl-js-ripple-effect">
+        <button id="myBtn3" style="color: #3E4966"class="mdl-button mdl-js-button mdl-js-ripple-effect">
           Find us
         </button>
       </div>
@@ -206,11 +213,12 @@
         <footer class="android-footer mdl-mega-footer">
           <div class="mdl-mega-footer--top-section">
             <div class="mdl-mega-footer--left-section">
-              <button class="mdl-mega-footer--social-btn"></button>
+
+              <a href="https://www.facebook.com/talkdeskcreditunion/" target="_blank" class="fa fa-facebook"></a>
               &nbsp;
-              <button class="mdl-mega-footer--social-btn"></button>
+              <a href="https://twitter.com/TalkdeskU" target="_blank" class="fa fa-twitter"></a>
               &nbsp;
-              <button class="mdl-mega-footer--social-btn"></button>
+              <a href="https://instagram.com" target="_blank" class="fa fa-instagram"></a>
             </div>
             <div class="mdl-mega-footer--right-section">
               <a class="mdl-typography--font-light" href="#top">
@@ -304,6 +312,21 @@
           Submit
         </button>
       </div>
+        </div>
+        </div>
+
+                <div id="myModal3" class="modal">
+        <div style="text-align:center; padding-bottom: 50px;border-radius: 10px " class="modal-content">
+        <span class="close3" >&times;</span>
+        <h3 style="color: #202830">find us</h3>
+        <div>
+          <a href="https://www.facebook.com/talkdeskcreditunion/" target="_blank" class="fa fa-facebook"></a>
+          &nbsp;
+          <a href="https://twitter.com/TalkdeskU" target="_blank" class="fa fa-twitter"></a>
+          &nbsp;
+          <a href="https://instagram.com" target="_blank" class="fa fa-instagram"></a>
+        </div>
+
         </div>
         </div>
 
