@@ -25,6 +25,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Talkdesk Credit Union</title>
 
+    <script async type="text/javascript">
+      (function(i,s,o,r,g,v,a,m){g=v?g+'?v='+v:g;i['BrandEmbassy']=r;
+        i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)};i[r].l=+new Date();
+        a=s.createElement(o);m=s.getElementsByTagName(o)[0];a.async=1;
+        a.src=g+'?'+Math.round(Date.now()/1000/3600);m.parentNode.insertBefore(a,m)
+      })(window,document,'script','brandembassy','https://livechat-static.brandembassy.com/3/chat.js');
+
+
+      brandembassy('init', 'c2643170192be19600dd');
+      brandembassy('setOffsetX', '40'); // default = 20
+      brandembassy('setOffsetY', '40');
+      // `Put additional API calls here, if needed
+    </script>
+
     <!-- Skeleton Boilerplate CSS -->
     <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css') }}"> -->
     <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='skeleton.css') }}"> -->
@@ -62,15 +76,8 @@
       z-index: 900;
     }
     </style>
-    <script async type="text/javascript">
-    (function(i,s,o,r,g,v,a,m){g=v?g+'?v='+v:g;i['BrandEmbassy']=r;
-          i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)};i[r].l=+new Date();
-          a=s.createElement(o);m=s.getElementsByTagName(o)[0];a.async=1;
-          a.src=g+'?'+Math.round(Date.now()/1000/3600);m.parentNode.insertBefore(a,m)
-        })(window,document,'script','brandembassy','https://livechat-static.brandembassy.com/3/chat.js');
-    
-        brandembassy('init', 'c2643170192be19600dd');
-    </script>
+
+
   </head>
   <body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -219,7 +226,7 @@
         <br>
 
 
-        <footer class="android-footer mdl-mega-footer">
+        <footer style="z-index: -2" class="android-footer mdl-mega-footer">
           <div class="mdl-mega-footer--top-section">
             <div class="mdl-mega-footer--left-section">
 

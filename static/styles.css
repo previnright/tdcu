@@ -156,7 +156,7 @@ a img{
 }
 
 .android-header .mdl-menu__container {
-  z-index: 50;
+  z-index: -1;
   margin: 0 !important;
 }
 
@@ -298,6 +298,7 @@ a img{
   background: url('images/house2.jpg') center 30% no-repeat;
   background-size: cover;
   padding-left: 50px;
+  z-index: -1;
 }
 
 .logo-font {
@@ -506,6 +507,7 @@ a img{
   background-size: cover;
   height: 300px;
   opacity: 0.9;
+  z-index: -1;
 }
 
 .android-more-section {
