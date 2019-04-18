@@ -1,0 +1,24 @@
+tdcu.talkdeskid.com credentials
+Client ID: fb443a3bd1d44731ba3afc4cd14fa787
+Client Secret: gK5aP0rN_eeFtwcwFaO4sEu248UfZmqFB5B5bAI51ZpwprQBMV4vHNy8bR4AAzlqC865Teqv-oysfElsDjPr_g
+Public Key: MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEbM7nE4NlPMcZ/4GLUQiT/xTpIKTtgnRnSLDNRZQZnB1j9kUP8KHSB+cvEB8YkKcKIpWd7mky/VJvigU7zupa2g==
+Private Key: MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgUULej3jPW4RyoO5vEnK4liUXrfv75Q95h95EgzTE4/2hRANCAARszucTg2U8xxn/gYtRCJP/FOkgpO2CdGdIsM1FlBmcHWP2RQ/wodIH5y8QHxiQpwoilZ3uaTL9Um+KBTvO6lra
+Key ID: d3b0fcfa8fa6412ea45833ce281b3788
+
+echo -n 'fb443a3bd1d44731ba3afc4cd14fa787:gK5aP0rN_eeFtwcwFaO4sEu248UfZmqFB5B5bAI51ZpwprQBMV4vHNy8bR4AAzlqC865Teqv-oysfElsDjPr_g' | openssl base64
+
+ZmI0NDNhM2JkMWQ0NDczMWJhM2FmYzRjZDE0ZmE3ODc6Z0s1YVAwck5fZWVGdHdjd0ZhTzRzRXUyNDhVZlptcUZCNUI1YkFJNTFacHdwclFCTVY0dkhOeThiUjRBQXpscUM4NjVUZXF2LW95c2ZFbHNEalByX2c=
+
+curl https://tdcu.talkdeskid.com/oauth/token \
+-H 'Authorization: Basic ZmI0NDNhM2JkMWQ0NDczMWJhM2FmYzRjZDE0ZmE3ODc6Z0s1YVAwck5fZWVGdHdjd0ZhTzRzRXUyNDhVZlptcUZCNUI1YkFJNTFacHdwclFCTVY0dkhOeThiUjRBQXpscUM4NjVUZXF2LW95c2ZFbHNEalByX2c=' \
+-H 'Content-Type: application/x-www-form-urlencoded' \
+-X POST \
+-d 'scope=callback%3Awrite&grant_type=client_credentials'
+
+curl https://api.talkdeskapp.com/calls/callback \
+-H 'Authorization: Bearer eyJraWQiOiIxYWI2YjBhNjAxNTY0MmY4YjA5MWM3MjE1MWIxMGQ5MCIsImFsZyI6IkVTMjU2In0.eyJpc3MiOiJodHRwczovL3ByZXZpbnRlc3QudGFsa2Rlc2tpZC5jb20iLCJhdWQiOiJodHRwczovL2FwaS50YWxrZGVza2FwcC5jb20iLCJleHAiOjE1NTQ4NDkzMDQsIm5iZiI6MTU1NDg0ODcwNCwiaWF0IjoxNTU0ODQ4NzA0LCJqdGkiOiJkNWNiMTFlNGNlNDY0ZTNjODI5NzA0ZmM1MThkZjVkZCIsImNpZCI6ImZjZDZmMWM3ZjM0MDQ2NWViNTI1Yjc1Yzc0ODhjNGMxIiwiZ3R5IjoiY2xpZW50X2NyZWRlbnRpYWxzIiwic2NwIjpbImNhbGxiYWNrOndyaXRlIl0sInJsbSI6Ik1BSU4iLCJhaWQiOiI1YzQ3YTY4OTE2YzI4OTAwMTQwMjUzM2EiLCJhY2MiOiJwcmV2aW50ZXN0Iiwic3ViIjoiZmNkNmYxYzdmMzQwNDY1ZWI1MjViNzVjNzQ4OGM0YzEifQ.ZWkfhBfy-Ue-XHN8osD-a0A-jmkqStEksGgzUtpbLUYokK__3n1svXyRUWMDKaTS27fxr-XyIACQWAl8_wossA' \
+-H 'Content-Type: application/json' \
+-X POST \
+-d '{"talkdesk_phone_number":"+18555888924","contact_phone_number":"+14086494479"}'
+
+open -n -a /Applications/Google\ Chrome.app --args --user-data-dir="/tmp/someFolderName" --disable-web-security
