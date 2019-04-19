@@ -1,29 +1,10 @@
-
-(function() {
-    var cors_api_host = 'cors-anywhere.herokuapp.com';
-    var cors_api_url = 'https://' + cors_api_host + '/';
-    var slice = [].slice;
-    var origin = window.location.protocol + '//' + window.location.host;
-    var open = XMLHttpRequest.prototype.open;
-    XMLHttpRequest.prototype.open = function() {
-        var args = slice.call(arguments);
-        var targetOrigin = /^https?:\/\/([^\/]+)/i.exec(args[1]);
-        if (targetOrigin && targetOrigin[0].toLowerCase() !== origin &&
-            targetOrigin[1] !== cors_api_host) {
-            args[1] = cors_api_url + args[1];
-        }
-        return open.apply(this, args);
-    };
-})();
-
-
 /* Talkdesk Callback */
 
 let data = '';
 let data2 = '';
 var token = '';
 var obj = '';
-const http = require('https');
+var http = require('https');
 
 // We need this to build our post string
 var querystring = require('querystring');
@@ -54,47 +35,67 @@ var post_options = {
 
 // Set up the request
 var post_req = http.request(post_options, function(res) {
-    res.setEncoding('utf8');
-    res.on('data', function (chunk) {
-        console.log('Response: ' + chunk);
-        data += chunk;
-    });
-      
-    res.on('end', function () {
-        console.log('data0 '+ data);
-        obj = JSON.parse(data);
-        console.log('data1 '+ obj.access_token);
-        token = obj.access_token;
-        console.log('data2 '+ token);
-
-
     
-    // An object of options to indicate where to post to 2
-    var post_options2 = {
-        host: 'api.talkdeskapp.com',
-        port: '443',
-        path: '/calls/callback',
-        method: 'POST',
-        headers: {
-            'Authorization': 'Bearer ' + token,
-            'Content-Type': 'application/json'
-        }
-    };
-    
-    // Set up the request 2
-    var post_req2 = http.request(post_options2, function(res) {
+
+    if (res.method === 'OPTIONS') {
+          console.log('!OPTIONS');
+          var headers = {};
+          // IE8 does not allow domains to be specified, just the *
+          // headers["Access-Control-Allow-Origin"] = req.headers.origin;
+          headers["Access-Control-Allow-Origin"] = "*";
+          headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
+          headers["Access-Control-Allow-Credentials"] = false;
+          headers["Access-Control-Max-Age"] = '86400'; // 24 hours
+          headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept";
+          res.writeHead(200, headers);
+          res.end();
+    }
+    else{
+
         res.setEncoding('utf8');
-        res.on('data2', function (chunk) {
-            data2+= chunk
+
+        res.on('data', function (chunk) {
+            console.log('Response: ' + chunk);
+            data += chunk;
         });
+          
         res.on('end', function () {
-            console.log('data_final_2 '+ data2);
+            console.log('data0 '+ data);
+            obj = JSON.parse(data);
+            console.log('data1 '+ obj.access_token);
+            token = obj.access_token;
+            console.log('data2 '+ token);
+
+
+        
+        // An object of options to indicate where to post to 2
+        var post_options2 = {
+            host: 'api.talkdeskapp.com',
+            port: '443',
+            path: '/calls/callback',
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json'
+            }
+        };
+        
+        // Set up the request 2
+        var post_req2 = http.request(post_options2, function(res) {
+            res.setEncoding('utf8');
+            res.on('data2', function (chunk) {
+                data2+= chunk
+            });
+            res.on('end', function () {
+                console.log('data_final_2 '+ data2);
+            });
         });
-    });
-      
-        post_req2.write(post_data2);
-        post_req2.end();
-    });
+          
+            post_req2.write(post_data2);
+            post_req2.end();
+        });
+
+    }
 });
   
 
