@@ -31,8 +31,10 @@ function TalkdeskApi(DataString){
 			request.setRequestHeader("Authorization", "Basic "+ secret); // basic authorization with client id
 			request.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // content type that is sent
 			request.setRequestHeader("Access-Control-Allow-Origin", "*");
+			request.setRequestHeader("Referrer-Policy", "unsafe-url");
+			request.setRequestHeader("X-Requested-With", "XMLHttpRequest"); 
 			request.setRequestHeader("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
-			request.setRequestHeader("Access-Control-Allow-Credentials", "false");
+			request.setRequestHeader("Access-Control-Allow-Credentials", "true");
 			request.setRequestHeader("Access-Control-Max-Age", '86400'); // 24 hours
 			request.setRequestHeader("Access-Control-Allow-Headers", "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept");
 
@@ -44,8 +46,12 @@ function TalkdeskApi(DataString){
 			var obj;
 			var key;
 
+
+
 			request.onreadystatechange = function () {
+
 			    if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+
 			        response = request.responseText;
 			        // console.log(response);
 			        obj = JSON.parse(response);
@@ -79,4 +85,4 @@ function TalkdeskApi(DataString){
 	// }
 }
 
-TalkdeskApi('{"talkdesk_phone_number":"+14085836054","contact_phone_number":"+14086494479"}');
+TalkdeskApi('{"talkdesk_phone_number":"+18555888924","contact_phone_number":"+14086494479"}');

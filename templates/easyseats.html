@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Seat Geek Demo</title>
+    <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <script>
+        (function(i,s,o,r,g,v,a,m){g=v?g+'?v='+v:g;i['BrandEmbassy']=r;
+            i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)};i[r].l=+new Date();
+            a=s.createElement(o);m=s.getElementsByTagName(o)[0];a.async=1;
+            a.src=g+'?'+Math.round(Date.now()/1000/3600);m.parentNode.insertBefore(a,m)
+        })(window,document,'script','brandembassy','https://livechat-static.brandembassy.com/3/chat.js');
+            
+        brandembassy('init', 'ba217ff16bb7d0ad115b');
+        brandembassy('setWindowHeight', '63%');
+
+        var user = {
+            user: ""
+        };
+
+        function logUp() {
+            $("#main").hide(50);
+            $("#callback").show(700);
+            return false;
+        }
+
+        function nextStep() {
+            $("#callback").hide(50);
+            $("#lastStep").show(700);
+            return false;
+        }
+
+        function showSuccess() {
+            $("#lastStep").hide(50);
+            $("#success").show(700);
+        }
+
+        function submitCall() {
+            var emptyFlag = 0;
+            var token = "";
+            if ($('#newNum').val() == '') {
+                $("#warning").show();
+                emptyFlag = 1;
+            } else {
+                var data = {
+                    talkdesk_phone_number: "+16505427141",
+                    contact_phone_number: "+1" + $('#newNum').val()
+                };
+            }
+            console.log(data);
+            if (!emptyFlag) {
+                $.ajax({
+                    url: "/getTok.php",
+                    type: "GET",
+                    dataType: "json",
+                    success: function(response) {
+                        var obj = JSON.parse(response);
+                        console.log("~~Object~~");
+                        console.log(obj);
+                        token = obj["access_token"];
+                        console.log(token);
+                        $.ajax({
+                            url: "https://api.talkdeskapp.com/calls/callback",
+                            type: "POST",
+                            crossDomain: true,
+                            data: JSON.stringify(data),
+                            contentType: "application/json",
+                            beforeSend: function(xhr) {
+                                xhr.setRequestHeader("Authorization", "Bearer " + token);
+                            }
+                        })
+                    }
+                })
+                showSuccess();
+            }
+            return false;
+        }
+
+        function closeError() {
+            $('#error').hide(50);
+        }
+
+        function closeWarn() {
+            $('#warning').hide(50);
+        }
+    </script>
+
+</head>
+
+
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/index"><img src="static/easySeatsLogo.png" alt="Seat Geek Logo" id="brand"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active" id="home"><a href=/index>HOME</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid bg-1 text-center">
+        <div class="row">
+            <div class="col-sm-9" id="bannerDiv">
+                <img src="static/banner2.png" alt="Pretty banner" id="banner">
+            </div>
+            <div id="lastStep" class="col-sm-3">
+                <div class="row">
+                    <h1>Request Info!</h1>
+                    <p></p>
+                </div>
+                <form id="finalForm" onsubmit="return submitCall()">
+                    <div class="row">
+                        <select class="formInput" required>
+                            <option value="" disabled selected>Select your option</option>
+                            <option value="gpu">Sports</option>
+                            <option value="cpu">Music</option>
+                            <option value="resist">More</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <p>Area of Interest</p>
+                    </div>
+                    <div class="row">
+                        <select class="formInput" required>
+                              <option value="" disabled selected>Select your option</option>
+                              <option value="gpu">Elton John</option>
+                              <option value="cpu">Queen</option>
+                              <option value="resist">Billy Joel</option>
+                              <option value="hat">Jennifer Lopez</option>
+                          </select>
+                    </div>
+                    <div class="row">
+                        <p>Artist</p>
+                    </div>
+                    <div class="row">
+                        <input type="text" name="orderNum" class="formInput" required>
+                    </div>
+                    <div class="row">
+                        <p>Order Number</p>
+                    </div>
+                    <div class="row">
+                        <input type="text" name="fullname" class="formInput" required>
+                    </div>
+                    <div class="row">
+                        <p>Full Name</p>
+                    </div>
+                    <div class="row">
+                        <input type="tel" name="teleNum" id="newNum" pattern='^(\d{10})$' title="1231231234" class="formInput" required>
+                    </div>
+                    <div class="row">
+                        <p>Phone</p>
+                    </div>
+                    <div class="row">
+                        <button type="submit" id="callBtn" onclick="logUp">Request Callback</button>
+                    </div>
+                    <div id="warning" class="alert alert-warning alert-dismissable warning">
+                        <a href="#" class="close" onclick="closeWarn()" aria-label="close"><strong>×</strong></a>
+                        <strong>You forgot to choose or enter a number!</strong>
+                    </div>
+                </form>
+            </div>
+            <div id="success" class="col-sm-3">
+                <h1>Success!</h1>
+                <p>We will call you back as soon as possible!</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="container-fluid bg-2 text-center">
+        <p>© 2019 Easy Seats. All rights reserved</p>
+    </footer>
+
+</body>
+
+</html>
