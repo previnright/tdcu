@@ -6,7 +6,7 @@ import requests
 import json
 
 app = Flask(__name__)
-CORS(app, resources={r"/call": {"origins": "*"}})
+CORS(app)
 
 @app.route('/')
 @app.route('/index')
