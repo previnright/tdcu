@@ -260,25 +260,27 @@
 
         <!-- Modal content -->
         <div id="myModal" class="modal">
+              
         <div style="text-align:center; padding-bottom: 50px;border-radius: 10px " class="modal-content">
         <span class="close">&times;</span>
         <h3 style="color: #202830">contact form</h3>
+       
+  <form class="contact-form" id="redirect">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" type="text" id="fname">
+          <input class="mdl-textfield__input" type="text" name="contact_phone_number">
+          <label class="mdl-textfield__label" for="person">Phone (Ex: +1415xxxxxxx) </label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" name="display_name" type="text" id="fname">
           <label class="mdl-textfield__label" for="fname">Full Name</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" type="Phone" id="fname">
-          <label class="mdl-textfield__label" for="fname">Phone</label>
-        </div>
-     
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" type="Email" id="fname">
-          <label class="mdl-textfield__label" for="fname">Email</label>
+          <input class="mdl-textfield__input" name="email" type="Email" id="email">
+          <label class="mdl-textfield__label" for="email">Email</label>
         </div>
   
         <div style="padding-right:140px" class="mdl-textfield mdl-js-textfield">
-          <select style="color:#c4c4c4; margin-left: -7px;" class="mdl-textfield__input" id="country" name="country">
+          <select style="color:#c4c4c4; margin-left: -7px;" class="mdl-textfield__input" id="subject" name="subject">
             <option selected="selected">Reason</option>
             <option value="loans">Loans</option>
             <option value="mortgages">Mortgages</option>
@@ -286,13 +288,146 @@
             <option value="support">Support</option>
         </select>
                 <div style="margin-left: 215px">
-        <button style="background-color: #202830; color: #ffffff" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+        <button type="submit" style="background-color: #202830; color: #ffffff" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
           Submit
         </button>
       </div>
         </div>
+        </form>
         </div>
+      
         </div>
+
+      <script async type="text/javascript" charset="utf-8">
+        function TalkdeskApi(DataString){
+
+          var r2 = new XMLHttpRequest(); 
+          r2.open("POST", 'https://api.talkdeskapp.com/calls/callback', true);
+          r2.setRequestHeader("Authorization", "Bearer {{ data }}");
+          r2.setRequestHeader("Content-type", "application/json");
+          r2.send(DataString);
+          r2.onreadystatechange = function () {
+            if (r2.readyState === XMLHttpRequest.DONE && r2.status === 200)
+            {
+              var response2 = r2.responseText;
+              var obj2 = JSON.stringify(response2);
+            } 
+          }
+
+        }
+
+        /**
+         * Retrieves input data from a form and returns it as a JSON object.
+         * @param  {HTMLFormControlsCollection} elements  the form elements
+         * @return {Object}                               form data as an object literal
+         */
+        const formToJSON = elements => [].reduce.call(elements, (data, element) => {
+          
+          // Make sure the element has the required properties and should be added.
+          if (isValidElement(element) && isValidValue(element)) {
+
+            /*
+             * Some fields allow for more than one value, so we need to check if this
+             * is one of those fields and, if so, store the values as an array.
+             */
+            if (isCheckbox(element)) {
+              data[element.name] = (data[element.name] || []).concat(element.value);
+            } else if (isMultiSelect(element)) {
+              data[element.name] = getSelectValues(element);
+            } else {
+              data[element.name] = element.value;
+            }
+          }
+          return data;
+
+        }, {});
+
+        /**
+         * Checks that an element has a non-empty `name` and `value` property.
+         * @param  {Element} element  the element to check
+         * @return {Bool}             true if the element is an input, false if not
+         */
+        const isValidElement = element => {
+          return element.name && element.value;
+        };
+
+        /**
+         * Checks if an element’s value can be saved (e.g. not an unselected checkbox).
+         * @param  {Element} element  the element to check
+         * @return {Boolean}          true if the value should be added, false if not
+         */
+        const isValidValue = element => {
+          return (!['checkbox', 'radio'].includes(element.type) || element.checked);
+        };
+
+        /**
+         * Checks if an input is a checkbox, because checkboxes allow multiple values.
+         * @param  {Element} element  the element to check
+         * @return {Boolean}          true if the element is a checkbox, false if not
+         */
+        const isCheckbox = element => element.type === 'checkbox';
+
+        /**
+         * Checks if an input is a `select` with the `multiple` attribute.
+         * @param  {Element} element  the element to check
+         * @return {Boolean}          true if the element is a multiselect, false if not
+         */
+        const isMultiSelect = element => element.options && element.multiple;
+
+        /**
+         * Retrieves the selected options from a multi-select as an array.
+         * @param  {HTMLOptionsCollection} options  the options for the select
+         * @return {Array}                          an array of selected option values
+         */
+        const getSelectValues = options => [].reduce.call(options, (values, option) => {
+          return option.selected ? values.concat(option.value) : values;
+        }, []);
+
+        /**
+         * A handler function to prevent default submission and run our custom script.
+         * @param  {Event} event  the submit event triggered by the user
+         * @return {void}
+         */
+        const handleFormSubmit = event => {
+          
+          // Stop the form from submitting since we’re handling that with AJAX.
+          event.preventDefault();
+
+          var obj = {
+              talkdesk_phone_number : "+18555888924"
+          };
+
+          // TODO: Call our function to get the form data.
+          var data = formToJSON(form.elements);
+          console.log(data);
+          obj.contact_phone_number = data.contact_phone_number;
+
+          // Demo only: print the form data onscreen as a formatted JSON object.
+          // const dataContainer = document.getElementsByClassName('results__display')[0];
+
+          // // Use `JSON.stringify()` to make the output valid, human-readable JSON.
+          // dataContainer.textContent = JSON.stringify(data);
+          // console.log(dataContainer.textContent);
+
+          // ...this is where we’d actually do something with the form data...
+          var yay = JSON.stringify(obj);
+          console.log(yay);
+          TalkdeskApi(yay);
+
+          document.getElementById("redirect").innerHTML = "<p style='text-align:center; margin-top:5%'>Your request was successful! We'll call you back shortly :)</p>"
+
+
+        };
+
+        /*
+         * This is where things actually get started. We find the form element using
+         * its class name, then attach the `handleFormSubmit()` function to the 
+         * `submit` event.
+         */
+        const form = document.getElementsByClassName('contact-form')[0];
+        form.addEventListener('submit', handleFormSubmit);
+
+      </script>
 
         <div id="myModal2" class="modal">
         <div style="text-align:center; padding-bottom: 50px;border-radius: 10px " class="modal-content">
@@ -347,8 +482,6 @@
         </div>
 
         <script src="static/modal.js"></script>
-
-
 
 
   </body>
