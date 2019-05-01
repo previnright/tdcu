@@ -37,6 +37,8 @@
       brandembassy('setOffsetX', '40'); // default = 20
       brandembassy('setOffsetY', '40');
       // `Put additional API calls here, if needed
+
+  
     </script>
 
     <!-- Skeleton Boilerplate CSS -->
@@ -169,11 +171,19 @@
         <p style="color: #ffffff; font-weight: lighter">Chat with experts online</p>
       </div>
       <div style="background-color: #ffffff" class="mdl-card__actions mdl-card--border">
-        <button style="color: #3E4966"class="mdl-button mdl-js-button mdl-js-ripple-effect">
+        <button id="chatbutton" onclick="chatFunction()" style="color: #3E4966"class="mdl-button mdl-js-button mdl-js-ripple-effect">
           Chat now
         </button>
       </div>
             </div>
+
+            <script>
+              document.getElementById("chatbutton").addEventListener("click", chatFunction);
+            function chatFunction() {
+
+              brandembassy('openChatWindow');
+            }
+            </script>
 
             <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
       <div style="background-color: #FFD4BA"class="mdl-card__title mdl-card--expand">
