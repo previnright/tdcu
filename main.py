@@ -26,6 +26,10 @@ def support():
 
 	return render_template('support.html', data=data)
 
+@app.route('/email')
+def email():
+    return render_template('email.html')
+
 @app.route('/call')
 @cross_origin()
 def call():
@@ -45,13 +49,7 @@ def call():
 
 	return render_template('call.html')
 
-@app.route('/email')
-def email():
-    return render_template('email.html')
 
-@app.route('/test')
-def test():
-    return 0
 
 @app.route('/easy')
 def easy():
