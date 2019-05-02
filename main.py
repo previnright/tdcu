@@ -31,7 +31,6 @@ def email():
     return render_template('email.html')
 
 @app.route('/call')
-@cross_origin()
 def call():
 
 	# url = 'https://tdcu.talkdeskid.com/oauth/token'
