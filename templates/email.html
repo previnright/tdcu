@@ -121,7 +121,7 @@
             </button>
             <h3 class="modal-title" style="margin-left: 60px">compose</h3>
           </div>
-          <form onsubmit="return sendEmail();">
+          <form id="redirect2" onsubmit="return sendEmail();">
             <div class="modal-body">
 
               <div class="form-group mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -323,6 +323,8 @@
         $('#compose-message').val('');
 
         $('#send-button').removeClass('disabled');
+
+        document.getElementById("redirect2").innerHTML = "<p style='text-align:center; margin-top:5%'>Your request was successful! We'll email you back shortly :)</p>";
       }
 
       function sendReply()
