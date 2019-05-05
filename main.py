@@ -30,8 +30,12 @@ def support():
 def email():
     return render_template('email.html')
 
-@app.route('/call')
-def call():
+@app.route('/gmail')
+def gmail():
+    return render_template('gmail.html')
+
+# @app.route('/call')
+# def call():
 
 	# url = 'https://tdcu.talkdeskid.com/oauth/token'
 	# body = 'scope=callback%3Awrite&grant_type=client_credentials'
@@ -46,13 +50,13 @@ def call():
 	# headers2 = {'Content-type': 'application/json', 'Authorization': 'Bearer ' + token}; 
 	# r2 = requests.post(url2, data=body2, headers=headers2)
 
-	return render_template('call.html')
+	# return render_template('call.html')
 
 
 
-@app.route('/easy')
-def easy():
-    return render_template('easy.html')
+# @app.route('/easy')
+# def easy():
+#     return render_template('easy.html')
 
 if __name__ == '__main__':
 	app.run(debug=True)
