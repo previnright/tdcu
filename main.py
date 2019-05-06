@@ -30,9 +30,9 @@ def support():
 def email():
     return render_template('email.html')
 
-@app.route('/gmail')
-def gmail():
-    return render_template('gmail.html')
+# @app.route('/gmail')
+# def gmail():
+#     return render_template('gmail.html')
 
 # @app.route('/call')
 # def call():
